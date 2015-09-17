@@ -39,9 +39,11 @@ namespace TaskTwo_AppOnXamarinForms
 			};
 
 			TopBtn.Clicked += (object sender, EventArgs e) => {
-				var res = Convert.ToDouble (TopEntry.Text);
-				counterService.Amount = res;
-			
+				var res = TopEntry.Text;
+				if (res != null && res.Length == 0)
+					res = "0";
+				
+				counterService.Amount = Convert.ToDouble (res);
 			};
 
 			GridForLbl = new Grid {
