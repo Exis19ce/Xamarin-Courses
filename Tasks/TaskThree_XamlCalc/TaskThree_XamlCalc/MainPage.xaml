@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:TaskThree_XamlCalc;assembly=TaskThree_XamlCalc" x:Class="TaskThree_XamlCalc.MainPage">
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<Style x:Key="NumberStyle" TargetType="Button">
+				<Setter Property="BackgroundColor" Value="White" />
+				<Setter Property="TextColor" Value="Black" />
+				<Setter Property="BorderRadius" Value="0" />
+				<Setter Property="Font" Value="36" />
+				<Setter Property="Command" Value="{Binding NumberComamnd}" />
+			</Style>
+			<Style x:Key="OperationsStyle" TargetType="Button">
+				<Setter Property="BackgroundColor" Value="#FFA500" />
+				<Setter Property="TextColor" Value="White" />
+				<Setter Property="BorderRadius" Value="0" />
+				<Setter Property="Font" Value="36" />
+				<Setter Property="Command" Value="{Binding OperatorCommand}" />
+			</Style>
+			<Style x:Key="MainLabelStyle" TargetType="Label">
+				<Setter Property="BackgroundColor" Value="Black" />
+				<Setter Property="TextColor" Value="White" />
+				<Setter Property="Font" Value="35" />
+				<Setter Property="YAlign" Value="Center" />
+				<Setter Property="XAlign" Value="Center" />
+			</Style>
+		</ResourceDictionary>
+	</ContentPage.Resources>
+	<Grid RowSpacing="5" ColumnSpacing="5" BackgroundColor="Black">
+		<Grid.BindingContext>
+			<local:MainViewModel />
+		</Grid.BindingContext>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="*" />
+			<RowDefinition Height="*" />
+			<RowDefinition Height="*" />
+			<RowDefinition Height="*" />
+			<RowDefinition Height="*" />
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*" />
+			<ColumnDefinition Width="*" />
+			<ColumnDefinition Width="*" />
+			<ColumnDefinition Width="*" />
+		</Grid.ColumnDefinitions>
+		<Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Text="{Binding TempTextCalc}" Style="{DynamicResource MainLabelStyle}" />
+		<Button Grid.Row="1" Grid.Column="0" Text="7" CommandParameter="7" Style="{DynamicResource NumberStyle}" />
+		<Button Grid.Row="1" Grid.Column="1" Text="8" CommandParameter="8" Style="{DynamicResource NumberStyle}" />
+		<Button Grid.Row="1" Grid.Column="2" Text="9" CommandParameter="9" Style="{DynamicResource NumberStyle}" />
+		<Button Grid.Row="2" Grid.Column="0" Text="4" CommandParameter="4" Style="{DynamicResource NumberStyle}" />
+		<Button Grid.Row="2" Grid.Column="1" Text="5" CommandParameter="5" Style="{DynamicResource NumberStyle}" />
+		<Button Grid.Row="2" Grid.Column="2" Text="6" CommandParameter="6" Style="{DynamicResource NumberStyle}" />
+		<Button Grid.Row="3" Grid.Column="0" Text="1" CommandParameter="1" Style="{DynamicResource NumberStyle}" />
+		<Button Grid.Row="3" Grid.Column="1" Text="2" CommandParameter="2" Style="{DynamicResource NumberStyle}" />
+		<Button Grid.Row="3" Grid.Column="2" Text="3" CommandParameter="3" Style="{DynamicResource NumberStyle}" />
+		<Button Grid.Row="4" Grid.Column="1" Text="0" CommandParameter="0" Style="{DynamicResource NumberStyle}" />
+		<Button Grid.Row="1" Grid.Column="3" Text="X" CommandParameter="*" Style="{DynamicResource OperationsStyle}" />
+		<Button Grid.Row="2" Grid.Column="3" Text="-" CommandParameter="-" Style="{DynamicResource OperationsStyle}" />
+		<Button Grid.Row="3" Grid.Column="3" Text="+" CommandParameter="+" Style="{DynamicResource OperationsStyle}" />
+		<Button Grid.Row="4" Grid.Column="2" Text="." Command="{Binding DotComamnd}" Style="{DynamicResource OperationsStyle}" />
+		<Button Grid.Row="4" Grid.Column="3" Text="=" Command="{Binding CalculationCommand}" Style="{DynamicResource OperationsStyle}" />
+		<Button Grid.Row="4" Grid.Column="0" Text="del" Command="{Binding DelCommand}" Style="{DynamicResource OperationsStyle}" />
+	</Grid>
+</ContentPage>
